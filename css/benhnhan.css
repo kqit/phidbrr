@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+#patientId {
+    padding: 8px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+#context>input{
+    border: 1px solid #ccc;
+    width: 90%;
+    border-radius: 4px;
+    padding: 8px;
+    outline: 0;
+}
+button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#patientInfo, #diagnosis, #prescription {
+    margin-bottom: 20px;
+}
+
+textarea {
+    width: 95%;
+    padding: 2.5%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+#context {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 1.5fr 6fr 1.5fr 1fr;
+}
+#context>input:first-child{
+    font-weight: 700;
+    font-size: 18px;
+}
+.lieu-luong  input{
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    border: 0;
+    height: 20px;
+}
+.ten-thuoc{
+    border: 1px solid #ccc;
+    width: 90%;
+    border-radius: 4px;
+    padding: 8px;
+    
+
+    margin:0 0 5px 0;
+}

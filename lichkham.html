@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule Display</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="./css/sign.css">
+  <link rel="stylesheet" href="./css/allin.css">
+  <link rel="stylesheet" href="./css/lichkham.css">
+  <style>
+    .selected {
+      background-color: hsl(219, 29%, 24%);
+      color: white;
+    }
+    .button-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .button-container button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="back-icon">
+    <a class="back_icon-wrap" href="javascript:history.go(-1)">
+        <i class="far fa-times-circle"></i>
+    </a>
+  </div>
+  <div id="content">
+    <div class="container" id="schedule_info">
+      <div class="row">
+        <div class="col col-m-12">
+          <h2 id="header_patient">Danh sách Bệnh Nhân khám ngày Hôm nay</h2>
+          <table id="table_doctor">
+            <thead>
+              <tr>
+                <th>Thời gian</th>
+                <th>Danh sách bệnh nhân</th>
+              </tr>
+            </thead>
+            <tbody id="scheduleBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="button-container">
+      <!--<button id="saveButton" >LƯU</button> -->
+    </div>
+  </div>
+  <!-- jQery -->
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+
+  <script>
+    const fakeDataSchedule={
+      '8h':[{
+        name:"Hoàng Thế Huy",
+        age:"20",
+      }],
+      '9h':[{
+        name:"Hoàng Thế A",
+        age:"20",
+      }],
+      '14h':[{
+        name:"Nguyễn Văn A",
+        age:"20",
+      }],
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      const currentDate = new Date();
+      const scheduleBody = document.getElementById('scheduleBody');
+      const timeSlots = ['8h', '9h', '10h', '13h', '14h', '15h'];
+
+      for (let index in timeSlots) {
+        const row = document.createElement('tr');
+        const date = new Date(currentDate);
+        date.setDate(currentDate.getDate());
+
+        const dayCell = document.createElement('td');
+        dayCell.textContent = timeSlots[index];
+        dayCell.id = formatDate(date);
+        row.appendChild(dayCell);
+        const dayCells = document.createElement('td');
+        dayCells.classList.add("inHours")
+        fakeDataSchedule[timeSlots[index]]?fakeDataSchedule[timeSlots[index]].map(item => {
+            const element = document.createElement('div');
+            element.innerHTML = `
+                <div><span style="font-weight: 600;">Họ Và Tên: </span> ${item.name}</div>
+                <div><span style="font-weight: 600;">Tuổi: </span> ${item.age}</div>
+                <div><span style="font-weight: 600;">Triệu chứng: </span> Ho khó thở</div>
+            `;
+            dayCells.append(element)
+        }):''
+        
+        row.appendChild(dayCells);
+
+        scheduleBody.appendChild(row);
+      }
+    });
+
+    function formatDate(date) {
+      let year = date.getFullYear();
+      let month = (date.getMonth() + 1).toString().padStart(2, '0');
+      let day = date.getDate().toString().padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    function handleSlotClick(cell) {
+      if (cell.classList.contains('selected')) {
+        cell.classList.remove('selected');
+        cell.textContent = '';
+      } else {
+        cell.classList.add('selected');
+        cell.textContent = 'X';
+      }
+    }
+
+    document.getElementById('saveButton').addEventListener('', function() {
+      const selectedCells = document.querySelectorAll('.selected');
+      const schedule = [];
+
+      selectedCells.forEach(cell => {
+        const date = cell.parentElement.firstElementChild.id;
+        const timeSlot = cell.previousElementSibling ? cell.previousElementSibling.textContent : '';
+        schedule.push({ date, timeSlot });
+      });
+
+      console.log('Lưu lịch trình:', schedule);
+
+      // Gửi lịch trình tới server
+      fetch('/save-schedule', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(schedule)
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Lịch trình đã được lưu:', data);
+        alert('Lịch trình đã được lưu thành công!');
+      })
+      .catch(error => {
+        console.error('Lỗi khi lưu lịch trình:', error);
+        alert('Đã xảy ra lỗi khi lưu lịch trình.');
+      });
+    });
+
+    document.getElementById('editButton').addEventListener('click', function() {
+      const selectedCells = document.querySelectorAll('.selected');
+      selectedCells.forEach(cell => {
+        cell.classList.remove('selected');
+        cell.textContent = '';
+      });
+    });
+  </script>
+</body>
+</html>

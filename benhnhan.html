@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết Quả - CHUAN DOAN - KE DON</title>
+    <link rel="stylesheet" href="./css/benhnhan.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    
+</head>
+<body>
+    <div class="back-icon">
+        <a class="back_icon-wrap" href="javascript:history.go(-1)">
+            <i class="far fa-times-circle"></i>
+        </a>
+    </div>
+    <div class="container">
+        <h1>CHUẨN ĐOÁN - KÊ ĐƠN</h1>
+        <form id="searchForm">
+            <label for="patientId">Nhập ID Bệnh Nhân:</label>
+            <input type="text" id="patientId" name="patientId" required>
+            <button type="submit" style="margin-left: 10px;">Tra Cứu</button>
+        </form>
+        <div id="result-search">
+            <div id="patientInfo">
+                <h2>Thông Tin Bệnh Nhân</h2>
+                <p id="patientDetails"></p>
+            </div>
+            
+            <div id="diagnosis">
+                <h2>Chuẩn Đoán</h2>
+                <textarea id="diagnosisText" style="margin-right: 20px;" rows="3"></textarea>
+            </div>
+            
+            <div id="prescription">
+                <h2>Kê Đơn</h2>
+                <div id = "context">
+                    <div>STT</div>
+                    <div>Tên thuốc</div>
+                    <div>Số lượng</div>
+                    <div></div>
+                </div>
+                <div id = "context">
+                    <div>1</div>
+                    <div>
+                        <input class="ten-thuoc" type="text"/>
+                        <div class="lieu-luong"  style="font-size:13px">
+                            <span style="margin-right: 15px; font-weight: 600; font-style: italic;">
+                                Liều lượng: 
+                            </span>
+                            <span style="margin-right: 10px;">
+                                 <input type="text"/>
+                            </span>
+                            
+                        </div>
+                    </div>
+                    
+                    <input style="height: 16px;" type="text"/>
+                    
+                </div>
+            
+            </div>
+            <button class="add">Thêm</button>
+            <div style="margin-top: 10px;">
+                Ghi chú:
+                <textarea  id="diagnosisText" style="margin-right: 20px;  border: 0;" rows="2"></textarea>
+            </div>
+            <button class="save">Lưu</button>
+    </div>
+    </div>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>
+<style>
+    .back-icon{
+        position:fixed;
+        top: 4%;
+        right: 2%;
+        z-index: 999999;
+        
+    }
+    .back_icon-wrap i{
+        font-size: 40px;
+        color: gray;
+        width: 40px;
+        height: 40px;
+    }
+    .back_icon-wrap i:hover{
+        color: rgb(27, 27, 191);
+        opacity: 80%;
+        cursor: pointer;
+    }
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const patientId = params.get('patientId');
+    $("#result-search").hide()
+    
+    // Ở đây bạn sẽ gọi API hoặc tra cứu thông tin bệnh nhân từ database
+    // Mình sẽ mô phỏng với một đối tượng giả định
+    const patientData = {
+        '123': 'Tên: Nguyễn Văn A \n Tuổi: 30 \n Giới tính: Nam \n Tiền sử bệnh: Không có. \n Bảo hiểm y tế (-80%)',
+        '456': 'Tên: Trần Thị B\nTuổi: 25\nGiới tính: Nữ\nTiền sử bệnh: Dị ứng'
+    };
+    $('#searchForm').on('submit',(event)=>{
+        event.preventDefault()
+        var patientId = $('#patientId').val(); // Lấy giá trị từ input
+        if(patientData[patientId]){
+            $("#result-search").show()
+            $('#patientDetails').text(patientData[patientId])
+        }else{
+            
+        }
+    })
+    $('.add').on('click', (event)=>{
+        const stt = $('#prescription').children().length - 1
+        $('#prescription').append(`
+        <div id = "context">
+            <div>${stt}</div>
+
+            <div>
+                <input class="ten-thuoc" type="text"/>
+                <div class="lieu-luong"  style="font-size:13px">
+                    <span style="margin-right: 15px; font-weight: 600; font-style: italic;">
+                        Liều lượng: 
+                    </span>
+                    <span style="margin-right: 10px;">
+                            <input type="text"/>
+                    </span>
+                    
+                </div>
+            </div>
+
+            <input style="height: 16px;" type="text"/>        
+        </div>
+        `)
+    })
+});
+</script>

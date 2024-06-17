@@ -1,0 +1,374 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header{
+    width: 100%;
+    height: 110px;
+    background-color: whitesmoke;
+}
+.row{
+    width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.header-logo .logo{
+    width: 130px;
+    height: auto;
+    margin: 10px 30px 0 -80px;
+    float: left;
+    border-block: 100%;
+}
+.menu-header .menu{  
+    display: inline;
+    list-style: none;
+    float: left;
+    padding: 45px 35px 55px 0px;
+}
+.menu-header .menu:last-child{
+    padding: 45px 0 55px 0;
+}
+.menu-header .menu .hmenu-hover{
+    text-decoration: none;
+    color: #080805;
+    font-size: 18px;
+}
+.dropdown {
+    position: absolute;
+    display: inline-block;
+}
+.dropdown-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20px;
+    right: 320px;
+    width: 450px;
+    background-color:rgb(71, 119, 0);
+    border-radius: 8px;
+}
+
+.dropdown-container select{
+    display: inline-block;
+    position: relative;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin: 10px;
+}
+.dropdown-container select b{
+    font-size: 10px;
+}
+.btn-wrapper{
+    position: absolute;
+    top: 30px;
+    right: 20px;
+}
+.hover-button {
+    display: inline-block;
+    background-color: #152f4a;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.hover-button:hover {
+    background-color: #828282;
+}
+select {
+    padding: 15px;
+    width: 150px;
+    font-size: 16px;
+}
+.menu-header .menu:hover .hmenu-hover{
+    color: #ffc836;
+}
+
+
+
+.row-hover{
+    width: 1170px;
+    margin: 0px auto;
+    padding: 0px 15px;
+}
+.menu-hover{
+    height: 200px;
+    width: 100%;
+    background-color: rgba(25,25,25,0.8);
+    position: absolute;
+    top: 120px;
+    left: 0;
+    display: none;
+    z-index: 100;
+}
+.menu-2:hover .menu-hover{
+    display: block;
+}
+.menu-hover-2{
+    float: left;
+    margin: 35px 0 0 0;
+    padding: 0 15px;
+}
+.menu-hover-2 a img{
+    width: 160px;
+    height: 100px;
+}
+.menu-hover-2 a p{
+    font-size: 16px;
+    color: #fff;
+    margin: 10px 0 0 0;
+}
+
+.menu-3:hover .menu-hover{
+    display: block;
+}
+.wrapper{
+    width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.col{
+    float: left;
+    color: #fff;
+    width: 25%;
+    padding: 0 15px;
+    margin: 20px 0 0 0;
+}
+.col li{
+    list-style: none;
+    font-size: 24px;
+}
+.col li a{
+    text-decoration: none;
+    font-size: 16px;
+    color: #fff;
+}
+
+.body-part{
+    position: relative;
+}
+.img-slider{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.banner{
+    position: relative;
+}
+.banner-radios{
+    width: auto;
+    height: 18px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+}
+.radio{
+    width: 16px;
+    height: 16px;
+    border: 1px solid #fff;
+    margin: 0 16px 0 0;
+    float: left;
+    border-radius: 50%;
+}
+.active{
+    background-color: #fff;
+}
+.content{
+    margin-top: 30px;
+    background-position: bottom left;
+}
+.content img{
+    border-radius: 4px;
+}
+.about-mc{
+    display: flex;
+    justify-content: space-between;
+}
+.wrap{
+    display: flex;
+    justify-content: space-between;
+}
+.mc-infor{
+    margin-left: 30px;
+}
+.mc-download{
+    position: relative;
+    margin-bottom: 30px;
+}
+.mc-download-text{
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+    color: #fff;
+}
+.mc-download input{
+    width: 350px;
+    font-size: 16px;
+    height: 40px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.mc-download img{
+    position: relative;
+    left: 420px;
+}
+
+.mc-margin{
+    margin-bottom: 20px;
+}
+
+.about-mc a{
+    text-decoration: none;
+    color: #fff;
+}
+.slider{
+    position: relative;
+    height: 350px;
+    background: url(https://png.pngtree.com/thumb_back/fw800/back_pic/04/57/88/285867aaa8b681b.jpg) center center no-repeat;
+    background-size: cover;
+}
+.slider-wrap{
+    text-align: center;
+    width: 30%;
+    left: 386px;
+    top: 28%;
+    position: absolute;
+    color: #fff; 
+}
+.img-slider{
+    height: 480px;
+}
+.slider-wrap h2{
+    font-size: 25px;
+    margin-bottom: 10px;
+    transform: translate(900px, 50px); 
+}
+.slider-wrap p{
+    font-size: 20px;
+    margin-bottom: 25px;
+    transform: translate(900px, 50px); 
+}
+.slider-wrap a{
+    text-decoration: none;
+    color: #bd0017;
+    background-color: #fff;
+    padding: 15px 45px;
+    border-radius: 30px;
+    margin-bottom: 10px;
+    display: inline-block;
+    transform: translate(900px,50px);
+}
+.footer{
+    display: flex;
+    font-size: 20px;
+    justify-content: space-between;
+    margin-top: 30px;
+    color: #444444;
+    margin-bottom: 70px;
+}
+.hear{
+    width: 25%;
+}
+.hear p{
+    margin-bottom: 20px;
+}
+.hear a{
+    text-decoration: none;
+    background-color: #BD0017;
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: #fff;
+}
+
+.email p:first-child{
+    margin-bottom: 10px;
+}
+.email input{
+    border-radius: 30px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    height: 48px;
+    width: 100%;
+    padding: 6px 12px;
+    border: 1px solid #ccc;;
+}
+.search{
+    display: flex;
+    margin-bottom: 10px;
+}
+.search button{
+    border-radius: 30px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: #BD0017;
+    color: #fff;
+    padding-left: 26px;
+    padding-right: 30px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+.tfooter{
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ccc;
+}
+.tfooter ul li:first-child{
+    margin: 8px 0;
+    font-weight: 800;
+}
+.tfooter li{
+    list-style: none;
+    font-size: 16px;
+    line-height: 2;
+
+}
+.tfooter li a{
+    text-decoration: none;
+    color: #444444;
+}
+.copyright{
+    width: 100%;
+    background-color: #000;
+    height: 48px;
+}
+.copyright p{
+    color: #fff; 
+    line-height: 48px;
+    font-size: 20px;
+    text-align: right;   
+    margin: 14px 0 0 0;
+}
+
+.search-container{
+    position: relative;
+}
+.icon-container i{
+    position: absolute;
+    color: blue;
+    font-size: 20px;
+    right: 0;
+    cursor: pointer;
+    top: 10px;
+    right: 10px;
+}
+/* Blinking effect for the warning */
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+.blink-warning {
+    color: red;
+    animation: blink 1s steps(5, start) infinite;
+}
